@@ -13,6 +13,8 @@ class User < ApplicationRecord
     user.email = omniauth_params.info.email
     user.name = omniauth_params.info.name
     user.image = omniauth_params.info.image
+    user.github_username = omniauth_params.info.nickname
+    user.x_username = omniauth_params.extra&.raw_info&.twitter_username
     user.save
     user
   end
