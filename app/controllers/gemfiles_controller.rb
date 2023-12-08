@@ -22,6 +22,10 @@ class GemfilesController < ApplicationController
 
     # Count the number of gem's in the "content" param based on the number of lines that start with "gem" (account for empty spaces)
     @gemfile.gem_count = @gemfile.count_gems
+
+    # Parse the contents of the gemfile and create a new AppGem for each gem, or find the existing AppGem if it already exists and associate it with the gemfile
+    @gemfile.parse_content
+
     
     if @gemfile.save
       redirect_to gemfile_url(@gemfile), notice: "Gemfile was successfully created."
@@ -33,6 +37,8 @@ class GemfilesController < ApplicationController
   def update
     # Count the number of gem's in the "content" param based on the number of lines that start with "gem"
     @gemfile.gem_count = @gemfile.count_gems
+
+    @gemfile.parse_content
 
     if @gemfile.update(gemfile_params)
       @gemfile.save

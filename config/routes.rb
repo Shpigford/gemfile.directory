@@ -6,6 +6,8 @@ Rails.application.routes.draw do
     end
   end
 
+  get '/top-gems', to: 'pages#top_gems'
+
   # Authentication
   get 'auth/github/callback', to: 'sessions#create'
   get 'auth/failure', to: 'sessions#failure'
