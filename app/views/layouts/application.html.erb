@@ -22,7 +22,7 @@
   <body class="h-full font-mono">
     <div class="min-h-full">
       <div class="pb-32 bg-black">
-        <nav class="bg-black border-b border-opacity-25 border-neutral-300 lg:border-none">
+        <nav class="bg-black border-b border-opacity-25 border-neutral-300 lg:border-none" data-controller="reveal" data-reveal-hidden-class="hidden">
           <div class="px-2 mx-auto max-w-7xl sm:px-4 lg:px-8">
             <div class="relative flex items-center justify-between h-16 lg:border-b lg:border-neutral-400 lg:border-opacity-25">
               <div class="flex items-center px-2 lg:px-0">
@@ -51,15 +51,15 @@
               </div>
               <div class="flex lg:hidden">
                 <!-- Mobile menu button -->
-                <button type="button" class="relative inline-flex items-center justify-center p-2 rounded-md text-neutral-200 bg-neutral-600 hover:bg-neutral-500 hover:bg-opacity-75 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-neutral-600" aria-controls="mobile-menu" aria-expanded="false">
+                <button type="button" class="relative inline-flex items-center justify-center p-2 rounded-md text-neutral-200 bg-neutral-600 hover:bg-neutral-500 hover:bg-opacity-75 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-neutral-600" aria-controls="mobile-menu" aria-expanded="false" data-action="click->reveal#toggle">
                   <span class="absolute -inset-0.5"></span>
                   <span class="sr-only">Open main menu</span>
                   <!-- Menu open: "hidden", Menu closed: "block" -->
-                  <svg class="block w-6 h-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                  <svg class="block w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-reveal-target="item">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
                   </svg>
                   <!-- Menu open: "block", Menu closed: "hidden" -->
-                  <svg class="hidden w-6 h-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                  <svg class="hidden w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-reveal-target="item">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
                   </svg>
                 </button>
@@ -69,30 +69,18 @@
               <div class="hidden lg:ml-4 lg:block">
                 <div class="flex items-center">
                   <!-- Profile dropdown -->
-                  <div class="relative flex-shrink-0 ml-3">
+                  <div class="relative flex-shrink-0 ml-3" data-controller="dropdown">
                     <div>
-                      <button type="button" class="relative flex text-sm text-white rounded-full bg-neutral-600 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-neutral-600" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
+                      <button type="button" class="relative flex text-sm text-white rounded-full bg-neutral-600 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-neutral-600" id="user-menu-button" aria-expanded="false" aria-haspopup="true" data-action="dropdown#toggle click@window->dropdown#hide">
                         <span class="absolute -inset-1.5"></span>
                         <span class="sr-only">Open user menu</span>
-                        <img class="w-8 h-8 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
+                        <%= image_tag current_user.image, class: 'w-8 h-8 rounded-full' %>
                       </button>
                     </div>
 
-                    <!--
-                      Dropdown menu, show/hide based on menu state.
-
-                      Entering: "transition ease-out duration-100"
-                        From: "transform opacity-0 scale-95"
-                        To: "transform opacity-100 scale-100"
-                      Leaving: "transition ease-in duration-75"
-                        From: "transform opacity-100 scale-100"
-                        To: "transform opacity-0 scale-95"
-                    -->
-                    <div class="absolute right-0 z-10 w-48 py-1 mt-2 origin-top-right bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
+                    <div class="absolute right-0 z-10 w-48 py-1 mt-2 origin-top-right bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1" data-dropdown-target="menu">
                       <!-- Active: "bg-gray-100", Not Active: "" -->
-                      <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">Your Profile</a>
-                      <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-1">Settings</a>
-                      <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-2">Sign out</a>
+                      <%= button_to 'Sign out', sign_out_path, method: :delete, class: "block px-4 py-2 text-sm text-gray-700", data: { turbo: false } %>
                     </div>
                   </div>
                 </div>
@@ -106,7 +94,7 @@
           </div>
 
           <!-- Mobile menu, show/hide based on menu state. -->
-          <div class="lg:hidden" id="mobile-menu">
+          <div class="hidden" id="mobile-menu" data-reveal-target="item">
             <div class="px-2 pt-2 pb-3 space-y-1">
               <!-- Current: "bg-neutral-700 text-white", Default: "text-white hover:bg-neutral-500 hover:bg-opacity-75" -->
               <a href="#" class="block px-3 py-2 text-base font-medium text-white rounded-md bg-neutral-700" aria-current="page">Most Popular</a>
@@ -116,17 +104,15 @@
             <div class="pt-4 pb-3 border-t border-neutral-700">
               <div class="flex items-center px-5">
                 <div class="flex-shrink-0">
-                  <img class="w-10 h-10 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
+                  <%= image_tag current_user.image, class: 'w-10 h-10 rounded-full' %>
                 </div>
                 <div class="ml-3">
-                  <div class="text-base font-medium text-white">Tom Cook</div>
-                  <div class="text-sm font-medium text-neutral-300">tom@example.com</div>
+                  <div class="text-base font-medium text-white"><%= current_user.name %></div>
+                  <div class="text-sm font-medium text-neutral-300"><%= current_user.email %></div>
                 </div>
               </div>
               <div class="px-2 mt-3 space-y-1">
-                <a href="#" class="block px-3 py-2 text-base font-medium text-white rounded-md hover:bg-neutral-500 hover:bg-opacity-75">Your Profile</a>
-                <a href="#" class="block px-3 py-2 text-base font-medium text-white rounded-md hover:bg-neutral-500 hover:bg-opacity-75">Settings</a>
-                <a href="#" class="block px-3 py-2 text-base font-medium text-white rounded-md hover:bg-neutral-500 hover:bg-opacity-75">Sign out</a>
+                <%= button_to 'Sign out', sign_out_path, method: :delete, class: "block px-3 py-2 text-base font-medium text-white rounded-md hover:bg-neutral-500 hover:bg-opacity-75", data: { turbo: false } %>
               </div>
             </div>
             <% end %>
