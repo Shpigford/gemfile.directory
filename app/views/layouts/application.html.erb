@@ -53,8 +53,10 @@
           <div class="px-2 mx-auto max-w-7xl sm:px-4 lg:px-8">
             <div class="relative flex items-center justify-between h-16 lg:border-b lg:border-neutral-400 lg:border-opacity-25">
               <div class="flex items-center px-2 lg:px-0">
-                <div class="flex items-center flex-shrink-0 space-x-3">
+                <div class="flex-shrink-0">
+                  <%= link_to root_path, class: 'flex items-center space-x-3' do %>
                   <i class="text-3xl text-white fa-regular fa-gem"></i> <div class="text-white">gemfile<span class="text-amber-300">.directory</span></div>
+                  <% end %>
                 </div>
                 <div class="hidden lg:ml-10 lg:block">
                   <div class="flex space-x-4">
