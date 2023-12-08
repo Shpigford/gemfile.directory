@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2023_12_08_164444) do
+ActiveRecord::Schema[7.2].define(version: 2023_12_08_173309) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -23,6 +23,7 @@ ActiveRecord::Schema[7.2].define(version: 2023_12_08_164444) do
     t.string "name"
     t.string "app_link"
     t.string "github_link"
+    t.integer "gem_count"
     t.index ["user_id"], name: "index_gemfiles_on_user_id"
   end
 
