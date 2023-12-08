@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  get 'dashboard', to: 'pages#dashboard'
-
   resources :gemfiles do
     member do
       post "favorite", to: "gemfiles#favorite"
