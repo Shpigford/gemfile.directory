@@ -67,7 +67,7 @@ class GemfilesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def gemfile_params
-      params.require(:gemfile).permit(:content, :name, :app_link, :github_link)
+      params.require(:gemfile).permit(:content, :name, :app_link, :github_link, :notes)
     end
 
     def authorize_user!

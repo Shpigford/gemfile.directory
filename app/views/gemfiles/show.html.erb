@@ -29,6 +29,9 @@
           <% end %>
           </b></span>
         </div>
+        <% if @gemfile.notes.present? %>
+          <p class="mt-3 text-xs italic text-white"><%= @gemfile.notes %></p>
+        <% end %>
       </div>
     </div>
 <% end %>
@@ -38,7 +41,7 @@
     <%= render partial: 'favorite', locals: {gemfile: @gemfile} %>
     <% if current_user == @gemfile.user  %>
       <%= link_to "Edit", edit_gemfile_path(@gemfile), class: "rounded-lg py-3 px-5 bg-white font-medium" %>
-      <%= button_to "Destroy", gemfile_path(@gemfile), method: :delete, class: "rounded-lg py-3 px-5 bg-white font-medium" %>
+      <%= button_to "Destroy", gemfile_path(@gemfile), method: :delete, data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to remove this Gemfile?" }, class: "rounded-lg py-3 px-5 bg-white font-medium" %>
     <% end %>
   </div>
 <% end %>
