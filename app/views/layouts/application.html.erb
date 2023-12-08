@@ -44,6 +44,8 @@
     </script>
 
     <%= hotwire_livereload_tags if Rails.env.development? %>
+
+    <%= render 'shared/ga' if Rails.env.production? %>
   </head>
 
   <body class="h-full font-mono">
