@@ -12,8 +12,11 @@
   <% @gemfiles.each do |gemfile| %>
   <li class="flex flex-wrap items-center justify-between py-5 gap-x-6 gap-y-4 sm:flex-nowrap">
     <div>
-      <p class="text-sm font-semibold leading-6 text-gray-900">
-        <%= link_to gemfile.name, gemfile_path(gemfile), class: 'hover:underline' %>
+      <p class="font-semibold leading-6 text-gray-900 text-md">
+        <%= link_to gemfile_path(gemfile), class: 'hover:underline flex items-center' do %>
+          <%= image_tag "https://icons.duckduckgo.com/ip3/#{URI.parse(gemfile.app_link).host}.ico", class: 'mr-2 w-6 h-6 rounded-md' %>
+          <span><%= gemfile.name %></span>
+        <% end %>
       </p>
       <div class="flex items-center mt-1 text-xs leading-5 text-gray-500 gap-x-2">
         <p class="flex">
