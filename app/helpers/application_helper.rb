@@ -22,4 +22,12 @@ module ApplicationHelper
   def header_content?
     content_for?(:header_content)
   end
+
+  def header_action(&block)
+    content_for(:header_action, &block)
+  end
+
+  def header_action?
+    content_for?(:header_action)
+  end
 end

@@ -16,6 +16,15 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/arta.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+    <script>
+      document.addEventListener('turbo:load', () => {
+        hljs.highlightAll();
+      })
+    </script>
+
     <%= hotwire_livereload_tags if Rails.env.development? %>
   </head>
 
@@ -123,7 +132,10 @@
         </nav>
         <header class="py-10">
           <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
-            <h1 class="text-3xl font-bold tracking-tight text-white"><%= content_for?(:header_title) ? yield(:header_title) : "Home" %></h1>
+            <div class="sm:flex sm:items-center sm:justify-between">
+              <%= content_for?(:header_content) ? (yield(:header_content)).html_safe : "<h1 class='flex-1 text-3xl font-bold tracking-tight text-white'>#{content_for?(:header_title) ? (yield(:header_title)).html_safe : "Latest Gemfiles"}</h1>".html_safe %>
+              <%= content_for?(:header_action) ? (yield(:header_action)).html_safe : "" %>
+            </div>
           </div>
         </header>
       </div>
@@ -131,6 +143,30 @@
       <main class="-mt-32">
         <div class="px-4 pb-12 mx-auto max-w-7xl sm:px-6 lg:px-8">
           <div class="px-5 py-6 bg-white rounded-lg shadow sm:px-6">
+
+            <% if flash[:success] || flash[:notice] %>
+            <div class="p-4 mb-4 rounded-md bg-green-50">
+              <div class="flex">
+                <div class="flex-shrink-0">
+                  <i class="w-5 h-5 text-green-400 fa-duotone fa-check-circle"></i>
+                </div>
+                <div class="ml-3">
+                  <h3 class="text-sm font-medium text-green-800"><%= flash[:success] || flash[:notice] %></h3>
+                </div>
+              </div>
+            </div>
+            <% elsif flash[:alert] || flash[:error] %>
+            <div class="p-4 mb-4 rounded-md bg-red-50">
+              <div class="flex">
+                <div class="flex-shrink-0">
+                  <i class="w-5 h-5 text-red-400 fa-duotone fa-exclamation-circle"></i>
+                </div>
+                <div class="ml-3">
+                  <h3 class="text-sm font-medium text-red-800"><%= flash[:alert] || flash[:error] %></h3>
+                </div>
+              </div>
+            <% end %>
+            
             <%= yield %>
           </div>
         </div>

@@ -4,7 +4,7 @@ class SessionsController < ApplicationController
 
     if @user.persisted?
       session[:user_id] = @user.id
-      redirect_path = request.env['omniauth.origin'] || dashboard_path
+      redirect_path = request.env['omniauth.origin'] || root_path
       redirect_to redirect_path, notice: "Logged in as #{@user.name}"
     else
       redirect_to root_url, alert: "Failure"

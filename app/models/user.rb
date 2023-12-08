@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  has_many :gemfiles
+
   validates :provider, presence: true
   validates :uid, presence: true, uniqueness: true
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }, presence: true, uniqueness: true

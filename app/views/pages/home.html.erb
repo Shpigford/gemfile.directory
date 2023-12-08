@@ -1,3 +1,9 @@
 <%
   header_title "Latest Gemfiles"
 %>
+
+<% header_action do %>
+  <div class="mt-3 sm:mt-0 sm:ml-4">
+    <%= link_to '<i class="text-xl fa-regular fa-gem"></i> <span>Add your Gemfile</span>'.html_safe, new_gemfile_path, class: "inline-flex items-center px-3 py-2 text-sm font-medium text-black border border-transparent rounded-md shadow-sm bg-amber-400 hover:bg-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-offset-2 flex space-x-3" %>
+  </div>
+<% end %>

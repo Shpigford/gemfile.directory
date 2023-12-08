@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   get 'dashboard', to: 'pages#dashboard'
 
+  resources :gemfiles
+
   # Authentication
   get 'auth/github/callback', to: 'sessions#create'
   get 'auth/failure', to: 'sessions#failure'
