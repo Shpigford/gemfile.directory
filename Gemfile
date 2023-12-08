@@ -45,9 +45,14 @@ gem "omniauth-rails_csrf_protection", "~> 1.0"
 # Error reporting
 gem "sentry-ruby"
 gem "sentry-rails"
+gem "sentry-sidekiq"
 
 # Info
 gem "gems"
+
+# Background jobs
+gem "sidekiq", github: "sidekiq/sidekiq"
+gem 'sidekiq-status'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem

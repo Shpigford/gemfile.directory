@@ -24,6 +24,10 @@ class Gemfile < ApplicationRecord
 
         app_gem = AppGem.find_or_create_by(name: gem_name)
         self.app_gems << app_gem
+
+        Rails.logger.warn "Enqueuing UpdateGemDataJob for #{app_gem.name} - #{app_gem.id}"
+
+        UpdateGemDataJob.perform_async(app_gem.id)
       end
     end
   end

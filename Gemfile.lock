@@ -108,6 +108,16 @@ GIT
       thor (~> 1.0, >= 1.2.2)
       zeitwerk (~> 2.6)
 
+GIT
+  remote: https://github.com/sidekiq/sidekiq.git
+  revision: 1dc870698b7772bd9deead93d2645cda83d43476
+  specs:
+    sidekiq (7.2.0)
+      concurrent-ruby (< 2)
+      connection_pool (>= 2.3.0)
+      rack (>= 2.2.4)
+      redis-client (>= 0.14.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -128,6 +138,8 @@ GEM
       rack-test (>= 0.6.3)
       regexp_parser (>= 1.5, < 3.0)
       xpath (~> 3.2)
+    chronic_duration (0.10.6)
+      numerizer (~> 0.1.1)
     concurrent-ruby (1.2.2)
     connection_pool (2.4.1)
     crass (1.0.6)
@@ -200,6 +212,7 @@ GEM
       racc (~> 1.4)
     nokogiri (1.15.5-x86_64-linux)
       racc (~> 1.4)
+    numerizer (0.1.1)
     oauth2 (2.0.9)
       faraday (>= 0.17.3, < 3.0)
       jwt (>= 1.0, < 3.0)
@@ -266,6 +279,12 @@ GEM
       sentry-ruby (~> 5.15.0)
     sentry-ruby (5.15.0)
       concurrent-ruby (~> 1.0, >= 1.0.2)
+    sentry-sidekiq (5.15.0)
+      sentry-ruby (~> 5.15.0)
+      sidekiq (>= 3.0)
+    sidekiq-status (3.0.3)
+      chronic_duration
+      sidekiq (>= 6.0, < 8)
     snaky_hash (2.0.1)
       hashie
       version_gem (~> 1.1, >= 1.1.1)
@@ -331,6 +350,9 @@ DEPENDENCIES
   selenium-webdriver
   sentry-rails
   sentry-ruby
+  sentry-sidekiq
+  sidekiq!
+  sidekiq-status
   sprockets-rails
   stimulus-rails
   tailwindcss-rails
