@@ -1,0 +1,11 @@
+<%= turbo_frame_tag "favorite_#{gemfile.id}" do %>
+  <% if user_signed_in? %>
+    <% if current_user && gemfile.favorites.exists?(user_id: current_user.id) %>
+      <%= button_to '<i class="text-2xl fa-solid fa-star text-amber-300 hover:text-neutral-700"></i>'.html_safe, unfavorite_gemfile_path(gemfile), method: :delete, class: "bg-white py-2.5 px-5 rounded-lg" %>
+    <% else %>
+      <%= button_to '<i class="text-2xl fa-regular fa-star text-neutral-700 hover:text-amber-300"></i>'.html_safe, favorite_gemfile_path(gemfile), method: :post, class: "bg-white py-2.5 px-5 rounded-lg" %>
+    <% end %>
+  <% else %>
+    <%= button_to '<i class="text-2xl fa-regular fa-star text-neutral-700 hover:text-amber-300"></i>'.html_safe, "/auth/github", class: 'bg-white py-2.5 px-5 rounded-lg flex items-center', data: { turbo: false } %>
+  <% end %>
+<% end %>

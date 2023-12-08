@@ -1,6 +1,6 @@
 class GemfilesController < ApplicationController
-  before_action :set_gemfile, only: %i[ show edit update destroy ]
-  before_action :authenticate_user!, only: %i[new create edit update destroy]
+  before_action :set_gemfile, only: %i[ show edit update destroy favorite unfavorite]
+  before_action :authenticate_user!, only: %i[new create edit update destroy favorite unfavorite]
   before_action :authorize_user!, only: %i[edit update destroy]
 
   def index
@@ -47,6 +47,16 @@ class GemfilesController < ApplicationController
     @gemfile.destroy!
 
     redirect_to gemfiles_url, notice: "Gemfile was successfully destroyed."
+  end
+
+  def favorite
+    current_user.favorites.create(favoritable: @gemfile)
+    render partial: 'gemfiles/favorite', locals: { gemfile: @gemfile }
+  end
+
+  def unfavorite
+    current_user.favorites.find_by(favoritable: @gemfile).destroy
+    render partial: 'gemfiles/favorite', locals: { gemfile: @gemfile }
   end
 
   private

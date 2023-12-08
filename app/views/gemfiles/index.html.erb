@@ -38,6 +38,14 @@
         </p>
       </div>
     </div>
+    <div class="text-right">
+      <div>
+        <b><%= gemfile.gem_count %></b> <%= 'gem'.pluralize(gemfile.gem_count) %>
+      </div>
+      <div>
+        <b><%= gemfile.favorites.count %></b> <%= 'favorite'.pluralize(gemfile.favorites.count) %>
+      </div>
+    </div>
   </li>
   <% end %>
 </ul>

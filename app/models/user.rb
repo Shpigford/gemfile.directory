@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   has_many :gemfiles
+  has_many :favorites, dependent: :destroy
 
   validates :provider, presence: true
   validates :uid, presence: true, uniqueness: true

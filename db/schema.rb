@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2023_12_08_175356) do
+ActiveRecord::Schema[7.2].define(version: 2023_12_08_185004) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
+
+  create_table "favorites", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "user_id", null: false
+    t.string "favoritable_type", null: false
+    t.uuid "favoritable_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["favoritable_type", "favoritable_id"], name: "index_favorites_on_favoritable"
+    t.index ["user_id"], name: "index_favorites_on_user_id"
+  end
 
   create_table "gemfiles", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "user_id", null: false
@@ -39,5 +49,6 @@ ActiveRecord::Schema[7.2].define(version: 2023_12_08_175356) do
     t.string "x_username"
   end
 
+  add_foreign_key "favorites", "users"
   add_foreign_key "gemfiles", "users"
 end

@@ -34,12 +34,11 @@
 <% end %>
 
 <% header_action do %>
-  <div class="mt-3 sm:mt-0 sm:ml-4">
+  <div class="flex items-center mt-3 space-x-3 sm:mt-0 sm:ml-4">
+    <%= render partial: 'favorite', locals: {gemfile: @gemfile} %>
     <% if current_user == @gemfile.user  %>
-      <%= link_to "Edit", edit_gemfile_path(@gemfile), class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-      <div class="inline-block ml-2">
-        <%= button_to "Destroy", gemfile_path(@gemfile), method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
-      </div>
+      <%= link_to "Edit", edit_gemfile_path(@gemfile), class: "rounded-lg py-3 px-5 bg-white font-medium" %>
+      <%= button_to "Destroy", gemfile_path(@gemfile), method: :delete, class: "rounded-lg py-3 px-5 bg-white font-medium" %>
     <% end %>
   </div>
 <% end %>
