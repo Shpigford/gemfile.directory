@@ -18,9 +18,17 @@
             <%= link_to '<i class="text-xl text-white fa-brands fa-github hover:text-amber-300"></i>'.html_safe, @gemfile.github_link %>
           <% end %>
         </div>
-        <span class="text-sm text-white">
-          Submitted by <%= @gemfile.user.name %>
-        </span>
+        <div class="flex items-center text-sm text-white">
+          Submitted by <span class="flex items-center ml-2 space-x-1"><%= image_tag @gemfile.user.image, class: 'w-4 h-4 rounded-full' %> <b>
+          <% if @gemfile.user.x_username.present? %>
+            <%= link_to "@#{@gemfile.user.x_username}", "https://x.com/#{@gemfile.user.x_username}", class: 'hover:underline' %>
+          <% elsif @gemfile.user.github_username.present? %>
+            <%= link_to "@#{@gemfile.user.github_username}", "https://github.com/#{@gemfile.user.github_username}", class: 'hover:underline' %>
+          <% else %>
+            <%= @gemfile.user.name %>
+          <% end %>
+            </b></span>
+        </div>
       </div>
     </div>
 <% end %>
@@ -37,7 +45,5 @@
 <% end %>
 
 <div class="flex w-full">
-  <div class="mx-auto">
-    <%= render @gemfile %>
-  </div>
+  <%= render @gemfile %>
 </div>

@@ -1,9 +1,3 @@
-<div id="<%= dom_id gemfile %>">
+<div id="<%= dom_id gemfile %>" class="w-full">
   <pre><code class="rounded-lg language-ruby"><%= gemfile.content %></code></pre>
-
-  <% if action_name != "show" %>
-    <%= link_to "Show this gemfile", gemfile, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <%= link_to "Edit this gemfile", edit_gemfile_path(gemfile), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
-    <hr class="mt-6">
-  <% end %>
 </div>
