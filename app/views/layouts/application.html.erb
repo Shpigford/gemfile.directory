@@ -1,14 +1,22 @@
 <!DOCTYPE html>
 <html class="h-full bg-gray-100">
   <head>
-    <title>Gemfile Directory</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title><%= content_for?(:title) ? ("#{yield(:title)} - gemfile.directory").html_safe : "gemfile.directory" %></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <meta name="title" content="<%= content_for?(:title) ? ("#{yield(:title)} - gemfile.directory").html_safe : "gemfile.directory" %>">
+    <meta name="description" content="<%= content_for?(:description) ? (yield(:description)) : "A directory of Rails Gemfiles for inspiration and learning!" %>">
+
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
 
+    <script src="https://kit.fontawesome.com/be36ab9559.js" crossorigin="anonymous"></script>
+
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+
+    <%= hotwire_livereload_tags if Rails.env.development? %>
   </head>
 
   <body class="h-full font-mono">
@@ -18,22 +26,18 @@
           <div class="px-2 mx-auto max-w-7xl sm:px-4 lg:px-8">
             <div class="relative flex items-center justify-between h-16 lg:border-b lg:border-neutral-400 lg:border-opacity-25">
               <div class="flex items-center px-2 lg:px-0">
-                <div class="flex-shrink-0">
-                  <img class="block w-8 h-8" src="https://tailwindui.com/img/logos/mark.svg?color=neutral&shade=300" alt="Your Company">
+                <div class="flex items-center flex-shrink-0 space-x-3">
+                  <i class="text-3xl text-white fa-regular fa-gem"></i> <div class="text-white">gemfile<span class="text-amber-300">.directory</span></div>
                 </div>
                 <div class="hidden lg:ml-10 lg:block">
                   <div class="flex space-x-4">
                     <!-- Current: "bg-neutral-700 text-white", Default: "text-white hover:bg-neutral-500 hover:bg-opacity-75" -->
-                    <a href="#" class="px-3 py-2 text-sm font-medium text-white rounded-md bg-neutral-700" aria-current="page">Dashboard</a>
-                    <a href="#" class="px-3 py-2 text-sm font-medium text-white rounded-md hover:bg-neutral-500 hover:bg-opacity-75">Team</a>
-                    <a href="#" class="px-3 py-2 text-sm font-medium text-white rounded-md hover:bg-neutral-500 hover:bg-opacity-75">Projects</a>
-                    <a href="#" class="px-3 py-2 text-sm font-medium text-white rounded-md hover:bg-neutral-500 hover:bg-opacity-75">Calendar</a>
-                    <a href="#" class="px-3 py-2 text-sm font-medium text-white rounded-md hover:bg-neutral-500 hover:bg-opacity-75">Reports</a>
+                    <a href="#" class="px-3 py-2 text-sm font-medium text-black rounded-md bg-amber-300" aria-current="page">Most Popular</a>
                   </div>
                 </div>
               </div>
               <div class="flex justify-center flex-1 px-2 lg:ml-6 lg:justify-end">
-                <div class="w-full max-w-lg lg:max-w-xs">
+                <div class="w-full max-w-lg opacity-40 lg:max-w-xs">
                   <label for="search" class="sr-only">Search</label>
                   <div class="relative text-gray-400 focus-within:text-gray-600">
                     <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
@@ -41,7 +45,7 @@
                         <path fill-rule="evenodd" d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z" clip-rule="evenodd" />
                       </svg>
                     </div>
-                    <input id="search" class="block w-full rounded-md border-0 bg-white py-1.5 pl-10 pr-3 text-gray-900 focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-neutral-600 sm:text-sm sm:leading-6" placeholder="Search" type="search" name="search">
+                    <input id="search" class="block w-full rounded-md border-0 bg-white py-1.5 pl-10 pr-3 text-gray-900 focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-neutral-600 sm:text-sm sm:leading-6" placeholder="Search (doesn't work yet)" type="search" name="search">
                   </div>
                 </div>
               </div>
@@ -60,16 +64,10 @@
                   </svg>
                 </button>
               </div>
+
+              <% if current_user %>
               <div class="hidden lg:ml-4 lg:block">
                 <div class="flex items-center">
-                  <button type="button" class="relative flex-shrink-0 p-1 rounded-full text-neutral-200 bg-neutral-600 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-neutral-600">
-                    <span class="absolute -inset-1.5"></span>
-                    <span class="sr-only">View notifications</span>
-                    <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-                      <path stroke-linecap="round" stroke-linejoin="round" d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0" />
-                    </svg>
-                  </button>
-
                   <!-- Profile dropdown -->
                   <div class="relative flex-shrink-0 ml-3">
                     <div>
@@ -99,6 +97,11 @@
                   </div>
                 </div>
               </div>
+              <% else %>
+              <%= button_to '<i class="text-xl fa-brands fa-github"></i> <span>Sign in</span>'.html_safe, "/auth/github", class: 'bg-white text-sm rounded-md px-3 py-2 flex space-x-2', data: { turbo: false } %>
+              <% end %>
+
+
             </div>
           </div>
 
@@ -106,12 +109,10 @@
           <div class="lg:hidden" id="mobile-menu">
             <div class="px-2 pt-2 pb-3 space-y-1">
               <!-- Current: "bg-neutral-700 text-white", Default: "text-white hover:bg-neutral-500 hover:bg-opacity-75" -->
-              <a href="#" class="block px-3 py-2 text-base font-medium text-white rounded-md bg-neutral-700" aria-current="page">Dashboard</a>
-              <a href="#" class="block px-3 py-2 text-base font-medium text-white rounded-md hover:bg-neutral-500 hover:bg-opacity-75">Team</a>
-              <a href="#" class="block px-3 py-2 text-base font-medium text-white rounded-md hover:bg-neutral-500 hover:bg-opacity-75">Projects</a>
-              <a href="#" class="block px-3 py-2 text-base font-medium text-white rounded-md hover:bg-neutral-500 hover:bg-opacity-75">Calendar</a>
-              <a href="#" class="block px-3 py-2 text-base font-medium text-white rounded-md hover:bg-neutral-500 hover:bg-opacity-75">Reports</a>
+              <a href="#" class="block px-3 py-2 text-base font-medium text-white rounded-md bg-neutral-700" aria-current="page">Most Popular</a>
             </div>
+            
+            <% if current_user %>
             <div class="pt-4 pb-3 border-t border-neutral-700">
               <div class="flex items-center px-5">
                 <div class="flex-shrink-0">
@@ -121,13 +122,6 @@
                   <div class="text-base font-medium text-white">Tom Cook</div>
                   <div class="text-sm font-medium text-neutral-300">tom@example.com</div>
                 </div>
-                <button type="button" class="relative flex-shrink-0 p-1 ml-auto rounded-full text-neutral-200 bg-neutral-600 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-neutral-600">
-                  <span class="absolute -inset-1.5"></span>
-                  <span class="sr-only">View notifications</span>
-                  <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0" />
-                  </svg>
-                </button>
               </div>
               <div class="px-2 mt-3 space-y-1">
                 <a href="#" class="block px-3 py-2 text-base font-medium text-white rounded-md hover:bg-neutral-500 hover:bg-opacity-75">Your Profile</a>
@@ -135,11 +129,15 @@
                 <a href="#" class="block px-3 py-2 text-base font-medium text-white rounded-md hover:bg-neutral-500 hover:bg-opacity-75">Sign out</a>
               </div>
             </div>
+            <% end %>
+
+
+
           </div>
         </nav>
         <header class="py-10">
           <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
-            <h1 class="text-3xl font-bold tracking-tight text-white">Dashboard</h1>
+            <h1 class="text-3xl font-bold tracking-tight text-white"><%= content_for?(:header_title) ? yield(:header_title) : "Home" %></h1>
           </div>
         </header>
       </div>
@@ -151,6 +149,14 @@
           </div>
         </div>
       </main>
+
+      <footer class="">
+        <div class="items-center px-6 py-12 mx-auto max-w-7xl md:flex gap-x-4 lg:px-8">
+          <div class="mt-8 md:order-1 md:mt-0">
+            <p class="text-sm leading-5 text-center text-gray-500">Made by <a href="https://twitter.com/Shpigford" class="text-amber-500">@Shpigford</a></p>
+          </div>
+        </div>
+      </footer>
     </div>
   </body>
 </html>
