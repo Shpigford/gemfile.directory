@@ -6,9 +6,18 @@
 <% header_content do %>
     <div class="flex">
       <div>
-        <h1 class="text-3xl font-bold tracking-tight text-white">
-          <%= content_for?(:header_title) ? (yield(:header_title)).html_safe : "Gemfile" %>
-        </h1>
+        <div class="flex items-center space-x-3">
+          <h1 class="mr-2 text-3xl font-bold tracking-tight text-white">
+            <%= content_for?(:header_title) ? (yield(:header_title)).html_safe : "Gemfile" %>
+          </h1>
+          <% if @gemfile.app_link.present? %>
+            <%= link_to '<i class="text-xl text-white fa-solid fa-link hover:text-amber-300"></i>'.html_safe, @gemfile.app_link %>
+          <% end %>
+
+          <% if @gemfile.github_link.present? %>
+            <%= link_to '<i class="text-xl text-white fa-brands fa-github hover:text-amber-300"></i>'.html_safe, @gemfile.github_link %>
+          <% end %>
+        </div>
         <span class="text-sm text-white">
           Submitted by <%= @gemfile.user.name %>
         </span>
