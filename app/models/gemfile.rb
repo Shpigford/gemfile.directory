@@ -17,7 +17,7 @@ class Gemfile < ApplicationRecord
         gem_name = line.strip.split(" ")[1]
         
         # only continue if gem_name.strip is not empty
-        unless gem_name.strip.empty?
+        if gem_name.present?
           # remove any quotes from the gem name
           gem_name = gem_name.gsub(/['"]/, '')
 
