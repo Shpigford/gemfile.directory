@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+.turbo-progress-bar {
+  height: 3px;
+  background-color: #fcd34d;
+}
+
 @layer base {
   @font-face {
     src: url(woff2/0-normal.woff2) format("woff2");
