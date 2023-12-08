@@ -16,6 +16,8 @@ class Gemfile < ApplicationRecord
       if line.strip.start_with?("gem")
         gem_name = line.strip.split(" ")[1]
 
+        Rails.logger.warn "Enqueuing NAMMEEE for #{gem_name}"
+
         # remove any quotes from the gem name
         gem_name = gem_name.gsub(/['"]/, '')
 
