@@ -1,27 +1,27 @@
 <%= form_with(model: gemfile, class: "contents") do |form| %>
 
-  <div class="my-5">
+  <div class="my-6">
     <%= form.label :name %>
-    <%= form.text_field :name, class: "block shadow rounded-md border border-neutral-200 outline-none px-3 py-2 mt-2 w-full placeholder-neutral-400", autocomplete: "off", placeholder: 'Shopify', required: true %>
     <p class="mt-1 text-xs text-neutral-500">The name of your app/site.</p>
+    <%= form.text_field :name, class: "block shadow rounded-md border border-neutral-200 outline-none px-3 py-2 mt-2 w-full placeholder-neutral-400", autocomplete: "off", placeholder: 'Shopify', required: true %>
   </div>
 
-  <div class="my-5">
+  <div class="my-6">
     <%= form.label :app_link %>
-    <%= form.url_field :app_link, class: "block shadow rounded-md border border-neutral-200 outline-none px-3 py-2 mt-2 w-full placeholder-neutral-400", autocomplete: "off", placeholder: 'https://shopify.com', required: true %>
     <p class="mt-1 text-xs text-neutral-500">A link to your app/site.</p>
+    <%= form.url_field :app_link, class: "block shadow rounded-md border border-neutral-200 outline-none px-3 py-2 mt-2 w-full placeholder-neutral-400", autocomplete: "off", placeholder: 'https://shopify.com', required: true %>
   </div>
 
-  <div class="my-5">
+  <div class="my-6">
     <%= form.label :github_link, 'GitHub link' %>
-    <%= form.url_field :github_link, class: "block shadow rounded-md border border-neutral-200 outline-none px-3 py-2 mt-2 w-full placeholder-neutral-400", autocomplete: "off", placeholder: 'https://github.com/Shopify/shopify_app' %>
     <p class="mt-1 text-xs text-neutral-500">A link to your GitHub repo.</p>
+    <%= form.url_field :github_link, class: "block shadow rounded-md border border-neutral-200 outline-none px-3 py-2 mt-2 w-full placeholder-neutral-400", autocomplete: "off", placeholder: 'https://github.com/Shopify/shopify_app' %>
   </div>
 
-  <div class="my-5">
-    <%= form.label :content %>
-    <%= form.text_area :content, rows: 20, class: "block shadow rounded-md border border-neutral-200 outline-none px-3 py-2 mt-2 w-full", required: true %>
+  <div class="my-6">
+    <%= form.label :content, 'Gemfile contents' %>
     <p class="mt-1 text-xs text-neutral-500">Copy and paste your Gemfile.</p>
+    <%= form.text_area :content, rows: 20, class: "block shadow rounded-md border border-neutral-200 outline-none px-3 py-2 mt-2 w-full", required: true %>
   </div>
 
   <div class="inline">
