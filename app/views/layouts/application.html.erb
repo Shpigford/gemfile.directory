@@ -47,12 +47,11 @@
     <%= javascript_importmap_tags %>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/arta.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
 
     <script>
-      document.addEventListener('turbo:load', () => {
-        hljs.highlightAll();
-      })
+      // document.addEventListener('turbo:load', () => {
+      //   hljs.highlightAll();
+      // })
     </script>
 
     <%= hotwire_livereload_tags if Rails.env.development? %>

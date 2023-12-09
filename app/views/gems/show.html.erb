@@ -1,0 +1,47 @@
+<%
+  title @gem.name
+  header_title @gem.name
+%>
+
+<h2 class="text-3xl font-bold tracking-tighter">Apps using the <%= @gem.name %> gem</h2>
+<ul role="list" class="divide-y divide-gray-100">
+  <% @gemfiles.each do |gemfile| %>
+  <li class="flex flex-wrap items-center justify-between py-5 gap-x-6 gap-y-4 sm:flex-nowrap">
+    <div>
+      <p class="font-semibold leading-6 text-gray-900 text-md">
+        <%= link_to gemfile_path(gemfile), class: 'hover:underline flex items-center' do %>
+          <%= image_tag "https://icons.duckduckgo.com/ip3/#{URI.parse(gemfile.app_link).host}.ico", class: 'mr-2 w-6 h-6 rounded-md' %>
+          <span><%= gemfile.name %></span>
+        <% end %>
+      </p>
+      <div class="flex items-center mt-1 text-xs leading-5 text-gray-500 gap-x-2">
+        <p class="flex">
+          Submitted by <span class="flex items-center ml-2 space-x-1"><%= image_tag gemfile.user.image, class: 'w-4 h-4 rounded-full' %> <b>
+          <% if gemfile.user.x_username.present? %>
+            <%= link_to "@#{gemfile.user.x_username}", "https://x.com/#{gemfile.user.x_username}", class: 'hover:underline' %>
+          <% elsif gemfile.user.github_username.present? %>
+            <%= link_to "@#{gemfile.user.github_username}", "https://github.com/#{gemfile.user.github_username}", class: 'hover:underline' %>
+          <% else %>
+            <%= gemfile.user.name %>
+          <% end %>
+          </b></span>
+        </p>
+        <svg viewBox="0 0 2 2" class="h-0.5 w-0.5 fill-current">
+          <circle cx="1" cy="1" r="1" />
+        </svg>
+        <p>
+          <%= time_ago_in_words(gemfile.created_at) %> ago
+        </p>
+      </div>
+    </div>
+    <div class="text-right">
+      <div>
+        <b><%= gemfile.gem_count %></b> <%= 'gem'.pluralize(gemfile.gem_count) %>
+      </div>
+      <div>
+        <b><%= gemfile.favorites.count %></b> <%= 'favorite'.pluralize(gemfile.favorites.count) %>
+      </div>
+    </div>
+  </li>
+  <% end %>
+</ul>

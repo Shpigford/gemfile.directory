@@ -1,6 +1,8 @@
 require 'sidekiq/web'
 
 Rails.application.routes.draw do
+  get "gems/index"
+  get "gems/show"
   mount Sidekiq::Web => "/sidekiq"
 
   # TODO: Add sidekiq auth
@@ -11,6 +13,8 @@ Rails.application.routes.draw do
       delete "unfavorite", to: "gemfiles#unfavorite"
     end
   end
+
+  resources :gems
 
   get '/top-gems', to: 'pages#top_gems'
 
