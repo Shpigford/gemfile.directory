@@ -9,7 +9,7 @@ class PagesController < ApplicationController
                          .group('app_gems.name, app_gems.details')
                          .select('app_gems.name, COUNT(gemfile_app_gems.app_gem_id) as count, app_gems.details')
                          .order('count DESC')
-                         .limit(10)
+                         .limit(25)
   end
 
 end
