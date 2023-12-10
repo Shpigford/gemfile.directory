@@ -5,4 +5,8 @@ class AppGem < ApplicationRecord
   def to_param
     name
   end
+
+  def homepage_uri
+    details['homepage_uri']
+  end
 end
