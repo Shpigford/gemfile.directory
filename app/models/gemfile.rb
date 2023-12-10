@@ -5,8 +5,10 @@ class Gemfile < ApplicationRecord
   has_many :app_gems, through: :gemfile_app_gems
 
   validates :app_link, format: URI::regexp(%w[http https])
-  validates :github_link, format: URI::regexp(%w[http https])
+  validates :github_link, format: URI::regexp(%w[http https]), if: -> { github_link.present? }
 
+  # Validate that content contains at least one gem
+  validate :gemfile_contains_gems
 
   def count_gems
     self.content.split("\n").select { |line| line.strip.start_with?("gem") }.count
@@ -36,4 +38,13 @@ class Gemfile < ApplicationRecord
       end
     end
   end
+
+  def gemfile_contains_gems
+    if self.content.present?
+      if self.content.split("\n").select { |line| line.strip.start_with?("gem") }.count == 0
+        errors.add(:content, "must contain at least one gem")
+      end
+    end
+  end
+
 end

@@ -30,7 +30,7 @@ class GemfilesController < ApplicationController
     @gemfile.parse_content
 
     
-    if @gemfile.save
+    if @gemfile.save!
       redirect_to gemfile_url(@gemfile), notice: "Gemfile was successfully created."
     else
       render :new, status: :unprocessable_entity
