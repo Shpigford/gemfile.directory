@@ -4,6 +4,10 @@ class Gemfile < ApplicationRecord
   has_many :gemfile_app_gems
   has_many :app_gems, through: :gemfile_app_gems
 
+  validates :app_link, format: URI::regexp(%w[http https])
+  validates :github_link, format: URI::regexp(%w[http https])
+
+
   def count_gems
     self.content.split("\n").select { |line| line.strip.start_with?("gem") }.count
   end
