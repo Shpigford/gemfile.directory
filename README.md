@@ -1,6 +1,6 @@
 # gemfile.directory
 
-[gemfile.directory](https://gemfile.directory) is a directory of Ruby gems that are used in your favorite Ruby and Rails projects!
+[gemfile.directory](https://gemfile.directory) is a directory of Ruby gemfiles that are used in your favorite Ruby and Rails projects!
 
 Made by [@Shpigford](https://twitter.com/Shpigford).
 
