@@ -2,12 +2,19 @@
 
 [gemfile.directory](https://gemfile.directory) is a directory of Ruby gems that are used in your favorite Ruby and Rails projects!
 
+Made by [@Shpigford](https://twitter.com/Shpigford).
+
+## Codebase
+
+The codebase is vanilla [Rails](https://rubyonrails.org/), [Sidekiq](https://sidekiq.org/) w/ [Redis](https://redis.io/), [Puma](http://puma.io/), and [Postgres](https://www.postgresql.org/). Quite a simple setup.
+
 ## Setup
 
 You'll need:
 
 - ruby >3 (specific version is in `Gemfile`)
 - postgreql (if using stock `config/database.yml`)
+- GitHub API key (for login)
 
 ```shell
 cd gemfile.directory
