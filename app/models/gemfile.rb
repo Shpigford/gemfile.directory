@@ -10,6 +10,12 @@ class Gemfile < ApplicationRecord
   # Validate that content contains at least one gem
   validate :gemfile_contains_gems
 
+  scope :with_favorites, -> do
+    left_joins(:favorites)
+      .select('gemfiles.*, COUNT(favorites.id) as favorites_count') .group('gemfiles.id')
+      .order('COUNT(favorites.id) DESC')
+  end
+
   def count_gems
     self.content.split("\n").select { |line| line.strip.start_with?("gem") }.count
   end
@@ -21,7 +27,7 @@ class Gemfile < ApplicationRecord
     self.content.split("\n").each do |line|
       if line.strip.start_with?("gem")
         gem_name = line.strip.split(" ")[1]
-        
+
         # only continue if gem_name.strip is not empty
         if gem_name.present?
           # remove any quotes from the gem name
@@ -47,4 +53,7 @@ class Gemfile < ApplicationRecord
     end
   end
 
+  def self.search(query)
+    with_favorites.where("name ILIKE ?", "%#{query}%").or(with_favorites.where("content ILIKE ?", "%#{query}%"))
+  end
 end
