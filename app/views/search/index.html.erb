@@ -1,0 +1,8 @@
+<% header_title "#{pluralize(@results.length, "result")} found for `#{params[:query]}`" %>
+
+<ul>
+  <% @results.each do |result| %>
+    <%= render "/gemfiles/gemfile_list_item", gemfile: result %>
+  <% end %>
+  <li class="hidden only:block">No results found...</li>
+</ul>
