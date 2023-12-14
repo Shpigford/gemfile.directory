@@ -16,6 +16,10 @@ class Gemfile < ApplicationRecord
       .order('COUNT(favorites.id) DESC')
   end
 
+  scope :search, -> (query) do
+    where("name ILIKE ?", "%#{query}%").or(where("content ILIKE ?", "%#{query}%"))
+  end
+
   def count_gems
     self.content.split("\n").select { |line| line.strip.start_with?("gem") }.count
   end
@@ -51,9 +55,5 @@ class Gemfile < ApplicationRecord
         errors.add(:content, "must contain at least one gem")
       end
     end
-  end
-
-  def self.search(query)
-    with_favorites.where("name ILIKE ?", "%#{query}%").or(with_favorites.where("content ILIKE ?", "%#{query}%"))
   end
 end
