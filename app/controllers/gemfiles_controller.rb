@@ -4,10 +4,7 @@ class GemfilesController < ApplicationController
   before_action :authorize_user!, only: %i[edit update destroy]
 
   def index
-    @gemfiles = Gemfile.left_joins(:favorites)
-                   .select('gemfiles.*, COUNT(favorites.id) as favorites_count')
-                   .group('gemfiles.id')
-                   .order('COUNT(favorites.id) DESC')
+    @gemfiles = Gemfile.with_favorites
   end
 
   def show

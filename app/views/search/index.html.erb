@@ -1,0 +1,6 @@
+<% header_title "#{pluralize(@results.length, "result")} found for `#{params[:query]}`" %>
+
+<ul>
+  <%= render collection: @results, partial: "/gemfiles/gemfile_list_item", as: :gemfile %>
+  <li class="hidden only:block">No results found...</li>
+</ul>
