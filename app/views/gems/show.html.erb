@@ -4,15 +4,22 @@
 %>
 
 <% header_content do %>
-  <div class="flex items-center space-x-1">
-    <h1 class="mr-2 text-3xl font-bold tracking-tight text-white">
-      <%= @gem.name %>
-    </h1>
-    <% if @gem.homepage_uri.present? %>
-      <%= link_to @gem.homepage_uri, target: "_blank" do %>
-        <i class="text-xl text-white fa-solid fa-link hover:text-amber-300"></i>
-      <% end %>
-    <% end %>
+  <div class="flex">
+    <div>
+      <div class="flex items-center space-x-3">
+        <h1 class="mr-2 text-3xl font-bold tracking-tight text-white">
+          <%= @gem.name %>
+        </h1>
+        <% if @gem.homepage_uri.present? %>
+          <%= link_to @gem.homepage_uri, target: "_blank" do %>
+            <i class="text-xl text-white fa-solid fa-link hover:text-amber-300"></i>
+          <% end %>
+        <% end %>
+      </div>
+      <div class="flex items-center text-sm text-white">
+        <%= @gem.details['info'] %>
+      </div>
+    </div>
   </div>
 <% end %>
 
