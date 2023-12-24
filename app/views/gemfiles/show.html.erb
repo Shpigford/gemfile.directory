@@ -3,6 +3,11 @@
   header_title @gemfile.name
 %>
 
+<% content_for(:head) do %>
+  <link rel="stylesheet" href="https://ga.jspm.io/npm:tippy.js@6.3.7/dist/tippy.css">
+  <link rel="stylesheet" href="https://ga.jspm.io/npm:tippy.js@6.3.7/themes/light.css">
+<% end %>
+
 <% header_content do %>
     <div class="flex">
       <div>
