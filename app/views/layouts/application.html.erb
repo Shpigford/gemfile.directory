@@ -48,12 +48,6 @@
 
     <%= yield(:head) %>
 
-    <script>
-      // document.addEventListener('turbo:load', () => {
-      //   hljs.highlightAll();
-      // })
-    </script>
-
     <%= hotwire_livereload_tags if Rails.env.development? %>
 
     <%= render 'shared/ga' if Rails.env.production? %>
