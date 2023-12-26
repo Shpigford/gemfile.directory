@@ -118,7 +118,7 @@
                       <button type="button" class="relative flex text-sm text-white rounded-full bg-neutral-600 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-neutral-600" id="user-menu-button" aria-expanded="false" aria-haspopup="true" data-action="dropdown#toggle click@window->dropdown#hide">
                         <span class="absolute -inset-1.5"></span>
                         <span class="sr-only">Open user menu</span>
-                        <%= image_tag current_user.image, class: 'w-8 h-8 rounded-full' %>
+                        <%= image_tag user_image_url(current_user, size: 32), class: 'w-8 h-8 rounded-full' %>
                       </button>
                     </div>
 
