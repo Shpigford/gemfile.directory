@@ -3,7 +3,9 @@
   header_title @gemfile.name
 %>
 
-<%= content_for(:head) do %>
+<% content_for(:head) do %>
+  <link rel="stylesheet" href="https://ga.jspm.io/npm:tippy.js@6.3.7/dist/tippy.css">
+  <link rel="stylesheet" href="https://ga.jspm.io/npm:tippy.js@6.3.7/themes/light.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/arta.min.css">
 <% end %>
 

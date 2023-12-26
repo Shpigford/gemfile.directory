@@ -7,6 +7,10 @@
   background-color: #fcd34d;
 }
 
+.tippy-box[data-theme~='light'] {
+  padding: 10px;
+}
+
 @layer base {
   @font-face {
     src: url(woff2/0-normal.woff2) format("woff2");

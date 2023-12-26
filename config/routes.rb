@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     member do
       post "favorite", to: "gemfiles#favorite"
       delete "unfavorite", to: "gemfiles#unfavorite"
+      get "gems_details", to: 'gemfiles#gems_details'
     end
   end
 

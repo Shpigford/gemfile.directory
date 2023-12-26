@@ -1,5 +1,5 @@
 class GemfilesController < ApplicationController
-  before_action :set_gemfile, only: %i[ show edit update destroy favorite unfavorite]
+  before_action :set_gemfile, only: %i[ show edit update destroy favorite unfavorite gems_details]
   before_action :authenticate_user!, only: %i[new create edit update destroy favorite unfavorite]
   before_action :authorize_user!, only: %i[edit update destroy]
 
@@ -63,6 +63,16 @@ class GemfilesController < ApplicationController
   def unfavorite
     current_user.favorites.find_by(favoritable: @gemfile).destroy
     render partial: 'gemfiles/favorite', locals: { gemfile: @gemfile }
+  end
+
+  def gems_details
+    json = {}.tap do |res|
+      @gemfile.app_gems.select("details ->> 'info' as info, name").each do |gem|
+        res[gem.name] = gem.info
+      end
+    end.to_json
+
+    render json:
   end
 
   private
