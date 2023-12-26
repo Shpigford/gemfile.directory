@@ -3,7 +3,7 @@ module GemfilesHelper
     concat("Submitted by ")
 
     tag.span(class: "flex item-center ml-2 space-x-1") do
-      concat(image_tag user_image_url(user, size: 16), class: "w-4 h-4 rounded-full")
+      concat(image_tag user_image_url(user, size: 32), class: "w-4 h-4 rounded-full")
 
       concat(
         tag.b do
