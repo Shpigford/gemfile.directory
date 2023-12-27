@@ -13,7 +13,7 @@ The codebase is vanilla [Rails](https://rubyonrails.org/), [Sidekiq](https://sid
 You'll need:
 
 - ruby >3 (specific version is in `Gemfile`)
-- postgreql (if using stock `config/database.yml`)
+- postgresql (if using stock `config/database.yml`)
 - GitHub API key (for login)
 
 ```shell
