@@ -2,7 +2,7 @@
 
 [gemfile.directory](https://gemfile.directory) is a directory of Ruby gemfiles that are used in your favorite Ruby and Rails projects!
 
-Made by [@Shpigford](https://twitter.com/Shpigford).
+Made by [@Shpigford](https://twitter.com/Shpigford) and [friends](https://github.com/Shpigford/gemfile.directory/graphs/contributors).
 
 ## Codebase
 
