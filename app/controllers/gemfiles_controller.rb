@@ -26,8 +26,7 @@ class GemfilesController < ApplicationController
     # Parse the contents of the gemfile and create a new AppGem for each gem, or find the existing AppGem if it already exists and associate it with the gemfile
     @gemfile.parse_content
 
-    
-    if @gemfile.save!
+    if @gemfile.save
       redirect_to gemfile_url(@gemfile), notice: "Gemfile was successfully created."
     else
       render :new, status: :unprocessable_entity
