@@ -1,8 +1,4 @@
 class PagesController < ApplicationController
-
-  def home
-  end
-
   def top_gems
     # Top gems are the gems that exist the most number of times in GemfileAppGem
     @gems = GemfileAppGem.joins(:app_gem)
@@ -11,5 +7,4 @@ class PagesController < ApplicationController
                          .order('count DESC')
                          .limit(25)
   end
-
 end
