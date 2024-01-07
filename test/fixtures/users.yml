@@ -5,11 +5,11 @@ one:
   uid: MyString
   name: MyString
   email: MyString
-  image: MyString
+  image: https://via.placeholder.com/150
 
 two:
   provider: MyString
   uid: MyString
   name: MyString
   email: MyString
-  image: MyString
+  image: https://via.placeholder.com/150
