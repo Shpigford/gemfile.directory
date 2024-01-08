@@ -19,7 +19,9 @@ jobs:
           bundler-cache: true
 
       - name: Lint code for consistent style
-        run: bin/rubocop -f github
+        run: |
+          gem install error_highlight -v 0.5.1
+          bin/rubocop -f github
 
   test:
     runs-on: ubuntu-latest

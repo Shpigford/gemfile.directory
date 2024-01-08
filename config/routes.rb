@@ -1,4 +1,4 @@
-require 'sidekiq/web'
+require "sidekiq/web"
 
 Rails.application.routes.draw do
   get "gems/index"
@@ -11,18 +11,18 @@ Rails.application.routes.draw do
     member do
       post "favorite", to: "gemfiles#favorite"
       delete "unfavorite", to: "gemfiles#unfavorite"
-      get "gems_details", to: 'gemfiles#gems_details'
+      get "gems_details", to: "gemfiles#gems_details"
     end
   end
 
   resources :gems
 
-  get '/top-gems', to: 'pages#top_gems'
+  get "/top-gems", to: "pages#top_gems"
 
   # Authentication
-  get 'auth/github/callback', to: 'sessions#create'
-  get 'auth/failure', to: 'sessions#failure'
-  delete 'sign_out', to: 'sessions#destroy'
+  get "auth/github/callback", to: "sessions#create"
+  get "auth/failure", to: "sessions#failure"
+  delete "sign_out", to: "sessions#destroy"
 
   get "search", to: "search#index"
 

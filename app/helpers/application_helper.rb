@@ -32,7 +32,7 @@ module ApplicationHelper
   end
 
   def nav_link(text, path)
-    class_name = current_page?(path) ? 'px-3 py-2 text-sm font-medium text-black rounded-md bg-amber-300' : 'px-3 py-2 text-sm font-medium text-white rounded-md bg-neutral-800 hover:bg-neutral-600'
+    class_name = current_page?(path) ? "px-3 py-2 text-sm font-medium text-black rounded-md bg-amber-300" : "px-3 py-2 text-sm font-medium text-white rounded-md bg-neutral-800 hover:bg-neutral-600"
     link_to text, path, class: class_name
   end
 end

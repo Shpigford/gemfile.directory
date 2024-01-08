@@ -56,12 +56,12 @@ class GemfilesController < ApplicationController
 
   def favorite
     current_user.favorites.create(favoritable: @gemfile)
-    render partial: 'gemfiles/favorite', locals: { gemfile: @gemfile }
+    render partial: "gemfiles/favorite", locals: { gemfile: @gemfile }
   end
 
   def unfavorite
     current_user.favorites.find_by(favoritable: @gemfile).destroy
-    render partial: 'gemfiles/favorite', locals: { gemfile: @gemfile }
+    render partial: "gemfiles/favorite", locals: { gemfile: @gemfile }
   end
 
   def gems_details
@@ -87,7 +87,7 @@ class GemfilesController < ApplicationController
 
     def authorize_user!
       unless @gemfile.user == current_user
-        redirect_to gemfiles_path, alert: 'You are not authorized to perform this action.'
+        redirect_to gemfiles_path, alert: "You are not authorized to perform this action."
       end
     end
 end

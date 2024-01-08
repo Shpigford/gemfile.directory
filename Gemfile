@@ -39,7 +39,7 @@ gem "tzinfo-data", platforms: %i[ windows jruby ]
 gem "bootsnap", require: false
 
 # Authentication
-gem 'omniauth-github', github: 'omniauth/omniauth-github', branch: 'master'
+gem "omniauth-github", github: "omniauth/omniauth-github", branch: "master"
 gem "omniauth-rails_csrf_protection", "~> 1.0"
 
 # Error reporting
@@ -52,7 +52,7 @@ gem "gems"
 
 # Background jobs
 gem "sidekiq", github: "sidekiq/sidekiq"
-gem 'sidekiq-status'
+gem "sidekiq-status"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
@@ -65,7 +65,7 @@ group :development do
   gem "hotwire-livereload"
 
   # Highlight the fine-grained location where an error occurred [https://github.com/ruby/error_highlight]
-  gem "error_highlight", ">= 0.4.0", platforms: [:ruby]
+  gem "error_highlight", ">= 0.4.0", platforms: [ :ruby ]
 
   gem "rubocop-rails-omakase", require: false
 end
