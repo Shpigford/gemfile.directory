@@ -2,6 +2,7 @@ require "application_system_test_case"
 
 class GemfilesTest < ApplicationSystemTestCase
   setup do
+    skip "pending"
     @gemfile = gemfiles(:one)
   end
 

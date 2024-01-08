@@ -33,7 +33,9 @@ jobs:
         env:
           RAILS_ENV: test
           DATABASE_URL: postgres://postgres:postgres@localhost:5432
-        run: bin/rails db:setup test test:system
+        run: |
+          gem install error_highlight -v 0.5.1
+          bin/rails db:setup test test:system
 
       - name: Keep screenshots from failed system tests
         uses: actions/upload-artifact@v4
