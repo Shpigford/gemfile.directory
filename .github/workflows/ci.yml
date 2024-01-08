@@ -20,7 +20,9 @@ jobs:
           bundler-cache: true
 
       - name: Scan for security vulnerabilities in Ruby Dependencies
-        run: bin/brakeman
+        run: |
+          gem install error_highlight -v 0.5.1
+          bin/brakeman
 
   lint:
     runs-on: ubuntu-latest
