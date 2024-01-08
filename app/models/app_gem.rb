@@ -7,6 +7,6 @@ class AppGem < ApplicationRecord
   end
 
   def homepage_uri
-    details['homepage_uri']
+    details["homepage_uri"]
   end
 end

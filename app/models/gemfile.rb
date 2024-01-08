@@ -4,19 +4,19 @@ class Gemfile < ApplicationRecord
   has_many :gemfile_app_gems
   has_many :app_gems, through: :gemfile_app_gems
 
-  validates :app_link, format: URI::regexp(%w[http https])
-  validates :github_link, format: URI::regexp(%w[http https]), if: -> { github_link.present? }
+  validates :app_link, format: URI.regexp(%w[http https])
+  validates :github_link, format: URI.regexp(%w[http https]), if: -> { github_link.present? }
 
   # Validate that content contains at least one gem
   validate :gemfile_contains_gems
 
   scope :with_favorites, -> do
     left_joins(:favorites)
-      .select('gemfiles.*, COUNT(favorites.id) as favorites_count') .group('gemfiles.id')
-      .order('COUNT(favorites.id) DESC')
+      .select("gemfiles.*, COUNT(favorites.id) as favorites_count") .group("gemfiles.id")
+      .order("COUNT(favorites.id) DESC")
   end
 
-  scope :search, -> (query) do
+  scope :search, ->(query) do
     where("name ILIKE ?", "%#{query}%").or(where("content ILIKE ?", "%#{query}%"))
   end
 
@@ -35,10 +35,10 @@ class Gemfile < ApplicationRecord
         # only continue if gem_name.strip is not empty
         if gem_name.present?
           # remove any quotes from the gem name
-          gem_name = gem_name.gsub(/['"]/, '')
+          gem_name = gem_name.gsub(/['"]/, "")
 
           # remove any commas from the gem name
-          gem_name = gem_name.gsub(/[,]/, '')
+          gem_name = gem_name.gsub(/[,]/, "")
 
           app_gem = AppGem.find_or_create_by(name: gem_name)
           self.app_gems << app_gem

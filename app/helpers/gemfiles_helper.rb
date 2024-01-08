@@ -8,9 +8,9 @@ module GemfilesHelper
       concat(
         tag.b do
           if user.x_username.present?
-            link_to "@#{user.x_username}", "https://x.com/#{user.x_username}", class: 'hover:underline'
+            link_to "@#{user.x_username}", "https://x.com/#{user.x_username}", class: "hover:underline"
           elsif user.github_username.present?
-            link_to "@#{user.github_username}", "https://github.com/#{user.github_username}", class: 'hover:underline'
+            link_to "@#{user.github_username}", "https://github.com/#{user.github_username}", class: "hover:underline"
           else
             user.name
           end
