@@ -2,12 +2,12 @@ require "test_helper"
 
 class GemsControllerTest < ActionDispatch::IntegrationTest
   test "should get index" do
-    get gems_index_url
+    get gems_url
     assert_response :success
   end
 
   test "should get show" do
-    get gems_show_url
+    get gem_url(app_gems(:one))
     assert_response :success
   end
 end

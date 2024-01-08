@@ -3,7 +3,9 @@
 one:
   user: one
   content: MyText
+  app_link: https://google.com
 
 two:
   user: two
   content: MyText
+  app_link: https://microsoft.com
