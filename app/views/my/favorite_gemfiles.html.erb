@@ -1,0 +1,14 @@
+<%
+  title "My Favorite Gemfiles"
+  header_title "My Favorite Gemfiles"
+%>
+
+<% if @favorite_gemfiles.present? %>
+	<ul role="list" class="divide-y divide-gray-100">
+	  <% @favorite_gemfiles.each do |gemfile| %>
+	    <%= render "gemfiles/gemfile_list_item", gemfile: gemfile %>
+	  <% end %>
+	</ul>
+<% else %>
+	<span class="italic text-sm text-gray-500">You don't have any favorite gemfiles yet.</span>
+<% end %>
