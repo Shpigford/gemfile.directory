@@ -17,11 +17,15 @@
             <%= content_for?(:header_title) ? (yield(:header_title)).html_safe : "Gemfile" %>
           </h1>
           <% if @gemfile.app_link.present? %>
-            <%= link_to '<i class="text-xl text-white fa-solid fa-link hover:text-amber-300"></i>'.html_safe, @gemfile.app_link %>
+            <%= link_to "#{@gemfile.app_link}" do %>
+              <i class="text-xl text-white fa-solid fa-link hover:text-amber-300"></i>
+            <% end %>
           <% end %>
 
           <% if @gemfile.github_link.present? %>
-            <%= link_to '<i class="text-xl text-white fa-brands fa-github hover:text-amber-300"></i>'.html_safe, @gemfile.github_link %>
+            <%= link_to "#{@gemfile.github_link}" do %>
+              <i class="text-xl text-white fa-brands fa-github hover:text-amber-300"></i>
+            <% end %>
           <% end %>
         </div>
         <div class="flex items-center text-sm text-white">
