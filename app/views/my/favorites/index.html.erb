@@ -1,0 +1,9 @@
+<%
+  title "My Favorite Gemfiles"
+  header_title "My Favorite Gemfiles"
+%>
+
+<ul role="list" class="divide-y divide-gray-100">
+	<%= render partial: "gemfiles/gemfile_list_item", collection: @favorite_gemfiles, as: :gemfile %>
+	<span class="italic text-sm text-gray-500 hidden only:inline-block">You don't have any favorite gemfiles yet.</span>
+</ul>
