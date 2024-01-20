@@ -118,7 +118,7 @@
 
                     <div class="absolute right-0 z-10 w-48 py-1 mt-2 origin-top-right bg-white rounded-md divide-y shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1" data-dropdown-target="menu">
                       <!-- Active: "bg-gray-100", Not Active: "" -->
-					  <%= link_to "Favorite Gemfiles", my_favorite_gemfiles_path, class: "block px-4 py-2 text-sm text-gray-700" %>
+					  <%= link_to "Favorite Gemfiles", my_favorites_path, class: "block px-4 py-2 text-sm text-gray-700" %>
                       <%= button_to 'Sign out', sign_out_path, method: :delete, class: "block bg-red-500 text-white mx-auto rounded mt-2 px-4 py-2 text-sm text-gray-700", data: { turbo: false } %>
                     </div>
                   </div>
