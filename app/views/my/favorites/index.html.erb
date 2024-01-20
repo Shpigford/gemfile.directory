@@ -5,9 +5,7 @@
 
 <% if @favorite_gemfiles.present? %>
 	<ul role="list" class="divide-y divide-gray-100">
-	  <% @favorite_gemfiles.each do |gemfile| %>
-	    <%= render "gemfiles/gemfile_list_item", gemfile: gemfile %>
-	  <% end %>
+		<%= render partial: "gemfiles/gemfile_list_item", collection: @favorite_gemfiles, as: :gemfile %>
 	</ul>
 <% else %>
 	<span class="italic text-sm text-gray-500">You don't have any favorite gemfiles yet.</span>
