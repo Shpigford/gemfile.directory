@@ -40,8 +40,6 @@ class GemfilesController < ApplicationController
     @gemfile.parse_content
 
     if @gemfile.update(gemfile_params)
-      @gemfile.save
-
       redirect_to gemfile_url(@gemfile), notice: "Gemfile was successfully updated."
     else
       render :edit, status: :unprocessable_entity
