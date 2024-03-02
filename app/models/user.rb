@@ -19,4 +19,8 @@ class User < ApplicationRecord
     user.save
     user
   end
+
+  def favorite_gemfiles
+    Gemfile.where(id: favorites.where(favoritable_type: "Gemfile").pluck(:favoritable_id)).with_favorites
+  end
 end

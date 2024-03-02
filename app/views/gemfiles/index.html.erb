@@ -13,7 +13,5 @@
 <% end %>
 
 <ul role="list" class="divide-y divide-gray-100">
-  <% @gemfiles.each do |gemfile| %>
-    <%= render "gemfile_list_item", gemfile: gemfile %>
-  <% end %>
+	<%= render partial: "gemfile_list_item", collection: @gemfiles, as: :gemfile %>
 </ul>

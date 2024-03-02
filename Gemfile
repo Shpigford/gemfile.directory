@@ -68,6 +68,7 @@ group :development do
   gem "error_highlight", ">= 0.4.0", platforms: [ :ruby ]
 
   gem "rubocop-rails-omakase", require: false
+  gem "brakeman"
 end
 
 group :test do
