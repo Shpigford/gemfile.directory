@@ -7,4 +7,7 @@ Sentry.init do |config|
   # of transactions for performance monitoring.
   # We recommend adjusting this value in production.
   config.traces_sample_rate = 1.0
+
+  # Skip Redis instrumentation to avoid conflicts with Sidekiq
+  config.rails.skippable_instrumentations += %w[redis]
 end
