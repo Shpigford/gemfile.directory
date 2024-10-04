@@ -1,0 +1,8 @@
+:concurrency: 5
+:pidfile: tmp/pids/sidekiq.pid
+:queues:
+  - default
+  - mailers
+
+:redis:
+  :read_timeout: 5.0
