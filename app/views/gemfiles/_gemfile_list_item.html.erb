@@ -2,7 +2,7 @@
   <div>
     <p class="font-semibold leading-6 text-gray-900 text-md">
       <%= link_to gemfile_path(gemfile), class: 'hover:underline flex items-center' do %>
-        <%= image_tag "https://icons.duckduckgo.com/ip3/#{URI.parse(gemfile.app_link).host}.ico", class: 'mr-2 w-6 h-6 rounded-md' %>
+        <%= image_tag "https://logo.synthfinance.com/#{URI.parse(gemfile.app_link).host}", class: 'mr-2 w-6 h-6 rounded-md' %>
         <span><%= gemfile.name %></span>
       <% end %>
     </p>
